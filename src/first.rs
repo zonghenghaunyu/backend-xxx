@@ -1,14 +1,18 @@
-pub mod first;
+pub fn printtest(){
+    println!("aaaaaa");
+}
+
+use std::mem;
 
 pub struct List {
     head: Link,
 }
-#[derive(Clone)]
+
 enum Link {
     Empty,
     More(Box<Node>),
 }
-#[derive(Clone)]
+
 struct Node {
     elem: i32,
     next: Link,
@@ -20,14 +24,16 @@ impl List {
     }
 
     pub fn push(&mut self, elem: i32) {
-        let new_node = Node {
+        let new_node = Box::new(Node {
             elem: elem,
-            next: self.head.clone(),
-        };
+            next: mem::replace(&mut self.head, Link::Empty),
+        });
 
+        self.head = Link::More(new_node);
     }
+
     pub fn pop(&mut self) -> Option<i32> {
-        match std::mem::replace(&mut self.head, Link::Empty) {
+        match mem::replace(&mut self.head, Link::Empty) {
             Link::Empty => None,
             Link::More(node) => {
                 self.head = node.next;
@@ -35,7 +41,19 @@ impl List {
             }
         }
     }
+
 }
+
+impl Drop for List {
+    fn drop(&mut self) {
+        let mut cur_link = mem::replace(&mut self.head, Link::Empty);
+
+        while let Link::More(mut boxed_node) = cur_link {
+            cur_link = mem::replace(&mut boxed_node.next, Link::Empty);
+        }
+    }
+}
+
 
 // in first.rs
 #[cfg(test)]
