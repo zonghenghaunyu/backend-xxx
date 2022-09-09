@@ -33,20 +33,28 @@ impl TreeNode {
         let last = queue.pop_back();
         if let Some(x) = last{
             if(is_left){
-                if let Some(val) = array[i] {
-                    let mut change = x.borrow_mut();
-                    let thL = Rc::new(RefCell::new(TreeNode::new(array[i])));
-                    change.left = Option::Some(thL.clone());
-                    queue.push_front(thL);
-                }
+                // if let Some(val) = array[i] {
+                //     let mut change = x.borrow_mut();
+                //     let thL = Rc::new(RefCell::new(TreeNode::new(array[i])));
+                //     change.left = Option::Some(thL.clone());
+                //     queue.push_front(thL);
+                // }
+                let mut change = x.borrow_mut();
+                let thL = Rc::new(RefCell::new(TreeNode::new(array[i])));
+                change.left = Option::Some(thL.clone());
+                queue.push_front(thL);
                 is_left = false;
             }else {
-                if let Some(val) = array[i] {
-                    let mut change = x.borrow_mut();
-                    let thR = Rc::new(RefCell::new(TreeNode::new(array[i])));
-                    change.right = Option::Some(thR.clone());
-                    queue.push_front(thR);
-                }
+              let mut change = x.borrow_mut();
+              let thR = Rc::new(RefCell::new(TreeNode::new(array[i])));
+              change.right = Option::Some(thR.clone());
+              queue.push_front(thR);
+                // if let Some(val) = array[i] {
+                //     let mut change = x.borrow_mut();
+                //     let thR = Rc::new(RefCell::new(TreeNode::new(array[i])));
+                //     change.right = Option::Some(thR.clone());
+                //     queue.push_front(thR);
+                // }
                 is_left = true;
             }
         }
@@ -58,7 +66,7 @@ impl TreeNode {
 
 #[cfg(test)]
 mod tests {
-    use std::ops::Add;
+    use std::{ops::Add, collections::VecDeque, cell::RefCell, rc::Rc};
 
     use super::TreeNode;
 
@@ -68,8 +76,28 @@ mod tests {
         let array = vec![Some(-1),Some(0),Some(3),Some(-2),Some(4),None,None,Some(8)];
 
         let res = TreeNode::create_binary_tree(array);
-
-        println!("{:?}",res)
+        println!("{:?}",res);
+        let mut queue = VecDeque::<Rc<RefCell<TreeNode>>>::new();
+        if let Some(x) = res{
+            queue.push_back(x)
+        }
+        while !queue.is_empty() {
+          
+          if let Some(pop) = queue.pop_back(){
+    
+            let s = pop.borrow();
+            println!("{:?}", s.val);
+            let xxl = s.left.as_ref();
+            if let Some(aaa) = xxl{
+              queue.push_back(aaa.clone())
+            }
+            let xxr = s.right.as_ref();
+            if let Some(aaar) = xxr{
+              queue.push_back(aaar.clone())
+            }
+            
+          }
+        }
 
     }
 
