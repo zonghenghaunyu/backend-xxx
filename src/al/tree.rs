@@ -1,4 +1,5 @@
-use std::{cell::RefCell, rc::Rc};
+use std::{cell::RefCell, rc::Rc, collections::VecDeque};
+
 
 
 #[derive(Debug, PartialEq, Eq)]
@@ -7,6 +8,7 @@ pub struct TreeNode {
   pub left: Option<Rc<RefCell<TreeNode>>>,
   pub right: Option<Rc<RefCell<TreeNode>>>,
 }
+
 
 impl TreeNode {
   #[inline]
@@ -17,18 +19,104 @@ impl TreeNode {
       right: None
     }
   }
+
+  pub fn create_binary_tree(array : Vec<Option<i32>>) -> Option<Rc<RefCell<TreeNode>>>{
+    if(array.len() == 0){
+        return Option::None;
+    }
+    let root = Rc::new(RefCell::new(TreeNode::new(array[0])));
+
+    let mut queue = VecDeque::<Rc<RefCell<TreeNode>>>::new();
+    queue.push_front(root.clone());
+    let mut is_left = true;
+    for i in 1 .. array.len() {
+        let last = queue.pop_back();
+        if let Some(x) = last{
+            if(is_left){
+                if let Some(val) = array[i] {
+                    let mut change = x.borrow_mut();
+                    let thL = Rc::new(RefCell::new(TreeNode::new(array[i])));
+                    change.left = Option::Some(thL.clone());
+                    queue.push_front(thL);
+                }
+                is_left = false;
+            }else {
+                if let Some(val) = array[i] {
+                    let mut change = x.borrow_mut();
+                    let thR = Rc::new(RefCell::new(TreeNode::new(array[i])));
+                    change.right = Option::Some(thR.clone());
+                    queue.push_front(thR);
+                }
+                is_left = true;
+            }
+        }
+    }
+    Some(root.clone())
+  }
+
 }
 
 #[cfg(test)]
 mod tests {
-    use super::TreeNode;
+    use std::ops::Add;
 
+    use super::TreeNode;
 
     #[test]
     fn it_works1() {
+        // TreeNode bt = TreeNode.createBinaryTree(new Integer[]{-1,0,3,-2,4,null,null,8});
+        let array = vec![Some(-1),Some(0),Some(3),Some(-2),Some(4),None,None,Some(8)];
 
-        let s = TreeNode::new(Box::new(Option::None),Box::new(Option::None),Option::Some(55));
+        let res = TreeNode::create_binary_tree(array);
 
-        println!("{:?}",s)
+        println!("{:?}",res)
+
+    }
+
+    #[test]
+    fn getVecByStr(){
+        let s = String::from("-1,0,3,-2,4,null,null,8");
+
+        let arr :Vec<&str>= s.split(",").collect();
+
+        let mut rtl = Vec::<String>::new();
+        let mut str_last: Vec<char> = Vec::new();
+        for ele in arr {
+            // let val = ele.to_owned();
+            rtl.push(ele.to_string());
+        }
+        for ele in rtl {
+            let charss = ele.chars();
+            let mut flag = true;
+            for ele in charss.clone() {
+                if(ele == 'n'){
+                  flag = false;
+                  break;
+                }
+            }
+            if(flag){
+              str_last.push('S');
+              str_last.push('o');
+              str_last.push('m');
+              str_last.push('e');
+              str_last.push('(');
+            }
+            for elem in charss {
+              if(elem == 'n'){
+                str_last.push('N');
+                str_last.push('o');
+                str_last.push('n');
+                str_last.push('e');
+                break;
+              }
+              str_last.push(elem);
+            }
+            if(flag){
+              str_last.push(')');
+            }
+            str_last.push(',');
+        }
+        println!("{:?}",String::from_iter(str_last))
+
     }
 }
