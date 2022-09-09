@@ -5,6 +5,7 @@ pub mod forthtwo;
 pub mod fifth;
 pub mod al;
 pub mod demo;
+pub mod classification;
 
 #[cfg(test)]
 mod tests {
