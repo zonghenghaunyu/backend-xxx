@@ -16,10 +16,10 @@ impl TreeNode {
     }
   }
 }
-use std::f32::consts::E;
 use std::rc::Rc;
 use std::cell::RefCell;
 
+#[warn(dead_code)]
 struct Solution{}
 
 impl Solution {
@@ -41,6 +41,5 @@ impl Solution {
         }
         setNode(&nums)
     }
-
 }
 

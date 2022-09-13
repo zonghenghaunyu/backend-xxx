@@ -27,7 +27,7 @@ impl Solution {
         let mut flag = len - 1 as usize;
         for idx in (1 ..= len - 1).rev() {
             println!("{},{}",idx,v[idx]);
-            if(v[idx] < v[idx - 1]){
+            if v[idx] < v[idx - 1] {
                 v[idx - 1] = v[idx - 1] - 1;
                 flag = idx;
             }
@@ -49,8 +49,8 @@ mod tests {
     fn it_works() {
         let ans = Solution :: monotone_increasing_digits1(332);
 
-        let a = 'b';
-        let b = b'b';
+        // let a = 'b';
+        // let b = b'b';
         println!("{}",ans)
     }
 

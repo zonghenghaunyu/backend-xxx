@@ -21,7 +21,7 @@ impl TreeNode {
   }
 
   pub fn create_binary_tree(array : Vec<Option<i32>>) -> Option<Rc<RefCell<TreeNode>>>{
-    if(array.len() == 0){
+    if array.len() == 0 {
         return Option::None;
     }
     let root = Rc::new(RefCell::new(TreeNode::new(array[0])));
@@ -32,7 +32,7 @@ impl TreeNode {
     for i in 1 .. array.len() {
         let last = queue.pop_back();
         if let Some(x) = last{
-            if(is_left){
+            if is_left {
                 // if let Some(val) = array[i] {
                 //     let mut change = x.borrow_mut();
                 //     let thL = Rc::new(RefCell::new(TreeNode::new(array[i])));
@@ -66,7 +66,7 @@ impl TreeNode {
 
 #[cfg(test)]
 mod tests {
-    use std::{ops::Add, collections::VecDeque, cell::RefCell, rc::Rc};
+    use std::{collections::VecDeque, cell::RefCell, rc::Rc};
 
     use super::TreeNode;
 
@@ -117,12 +117,12 @@ mod tests {
             let charss = ele.chars();
             let mut flag = true;
             for ele in charss.clone() {
-                if(ele == 'n'){
+                if ele == 'n' {
                   flag = false;
                   break;
                 }
             }
-            if(flag){
+            if flag {
               str_last.push('S');
               str_last.push('o');
               str_last.push('m');
@@ -130,7 +130,7 @@ mod tests {
               str_last.push('(');
             }
             for elem in charss {
-              if(elem == 'n'){
+              if elem == 'n' {
                 str_last.push('N');
                 str_last.push('o');
                 str_last.push('n');
@@ -139,7 +139,7 @@ mod tests {
               }
               str_last.push(elem);
             }
-            if(flag){
+            if flag {
               str_last.push(')');
             }
             str_last.push(',');

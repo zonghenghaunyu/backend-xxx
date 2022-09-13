@@ -1,7 +1,6 @@
 
 #[cfg(test)]
 mod tests {
-    use std::{fs::File, io::{BufReader, BufWriter}, net::TcpStream};
 
     use rand::Rng;
 
@@ -10,13 +9,13 @@ mod tests {
  
         let mut data :Vec<* const u8> = Vec::new();
 
-        for i in 0..5{
+        for _ in 0..5{
             let mut num: Vec<u8>= Vec::new();
-            for i in 0..16 {
-                unsafe{
-                    let rand_num :u8 = rand::thread_rng().gen();
-                    num.push(rand_num)
-                }
+            for _ in 0..16 {
+
+                let rand_num :u8 = rand::thread_rng().gen();
+                num.push(rand_num)
+
             }
             println!("num is : {:?},num.as_ptr(): {:?}",num,num.as_ptr());
             data.push(num.as_ptr());
@@ -62,7 +61,7 @@ mod tests {
 
     #[test]
     fn getAddr(){
-        let a = Box::new(4);
+        // let a = Box::new(4);
         let xx = vec![1,2,3];
         let b = 5;
         println!("{:p}",xx.as_ptr());

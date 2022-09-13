@@ -10,7 +10,6 @@ pub mod classification;
 
 #[cfg(test)]
 mod tests {
-    use crate::first;
 
     #[test]
     fn it_works() {

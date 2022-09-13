@@ -1,4 +1,3 @@
-use std::mem;
 
 pub struct List<'a, T> {
     head: Link<T>,
@@ -55,7 +54,6 @@ impl<'a, T> List<'a, T> {
 }
 
 mod test {
-    use super::List;
     #[test]
     fn basics() {
     //     let mut list = List::new();
