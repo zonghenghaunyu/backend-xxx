@@ -6,6 +6,7 @@ pub mod fifth;
 pub mod al;
 pub mod demo;
 pub mod classification;
+pub mod db;
 // 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
 
 #[cfg(test)]
