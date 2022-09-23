@@ -54,14 +54,28 @@ mod tests {
         println!("{}",ans)
     }
 
+
     #[test]
     fn it_works2() {
 
-        for idx in (0 .. 10).rev() {
-            println!("{}",idx)
+        let mut arr = vec![1,2,3];
 
-        }
+        change( &mut arr);
+        change( &mut arr);
 
+        println!("{:?}",arr)
+    }
+
+    fn change( arr : &mut Vec::<i32>){
+
+        arr.push(4);
+        change2(arr)
+    }
+
+    fn change2( arr : &mut Vec::<i32>){
+
+        arr.push(5)
+        
     }
 
 }
