@@ -53,11 +53,18 @@ impl Solution {
 
 #[cfg(test)]
 mod tests {
+    use std::{str::FromStr, convert::Infallible};
+
     use crate::al::mid::n_670::Solution;
 
     #[test]
     fn it_works1() {
-        let a = Solution::maximum_swap(555);
-        println!("{}",a)
+        // let a = Solution::maximum_swap(555);
+        let a = testResult().ok();
+        println!("{}",a.unwrap())
     }
+
+    pub fn testResult() -> Result<String,Infallible>{
+        String::from_str("aaaaa")
+      }
 }
