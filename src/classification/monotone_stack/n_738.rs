@@ -1,6 +1,17 @@
-struct Solution{}
 
-impl Solution {
+#[cfg(test)]
+mod tests {
+
+    #[test]
+    fn it_works() {
+        let ans = monotone_increasing_digits1(332);
+
+        // let a = 'b';
+        // let b = b'b';
+        println!("{}",ans);
+        monotone_increasing_digits(4);
+    }
+
     pub fn monotone_increasing_digits(n: i32) -> i32 {
 
         let mut v = n.to_string().into_bytes();
@@ -38,20 +49,6 @@ impl Solution {
         }
 
         v.into_iter().fold(0, |acc, v| acc * 10 + v as i32)
-    }
-    
-}
-
-#[cfg(test)]
-mod tests {
-    use super::Solution;
-    #[test]
-    fn it_works() {
-        let ans = Solution :: monotone_increasing_digits1(332);
-
-        // let a = 'b';
-        // let b = b'b';
-        println!("{}",ans)
     }
 
 

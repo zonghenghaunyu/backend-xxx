@@ -1,18 +1,20 @@
-pub mod N_738;
+pub mod n_738;
 
-struct Node{
-
-}
 #[cfg(test)]
 mod tests {
     use std::{rc::Rc, cell::Cell};
 
     #[test]
+    fn it_works5() {
+
+    }
+
+    #[test]
     fn itas(){
 
-        let mut a = Rc::new(Cell::new(5));
+        let a = Rc::new(Cell::new(5));
 
-        let mut b = a.clone();
+        let b = a.clone();
         
         let c = b.get();
 
@@ -30,7 +32,7 @@ mod tests {
     #[test]
     fn it_works3() {
 
-        let mut arr1 = Rc::new(vec![1,2,3]);
+        let arr1 = Rc::new(vec![1,2,3]);
 
         
         printarr( arr1.clone());

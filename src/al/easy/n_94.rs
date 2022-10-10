@@ -1,36 +1,10 @@
-use std::borrow::{BorrowMut, Borrow};
-use std::rc::Rc;
-use std::cell::RefCell;
 
 use crate::al::tree::TreeNode;
-
-
-
-struct Solution{}
-
-impl Solution {
-    // pub fn inorder_traversal(root: Option<Rc<RefCell<TreeNode>>>) -> Vec<Option<i32>> {
-    //     fn getAns(ans : &mut Vec<Option<i32>>,root : Option<Rc<RefCell<TreeNode>>>){
-    //         match root {
-    //             Some(node) => {
-    //                 getAns(ans,node.borrow_mut().left.take());
-    //                 ans.push(node.borrow().val);
-    //                 getAns(ans,node.borrow_mut().right.take());
-    //             },
-    //             None =>{}
-    //         }
-    //     }
-
-    //     let mut ans = Vec::<Option<i32>>::new();
-    //     getAns(&mut ans,root);
-    //     ans
-    // }
-}
 
 #[cfg(test)]
 mod tests {
     use std::{collections::VecDeque, cell::RefCell, rc::Rc};
-    use crate::al::easy::n_94::Solution;
+    // use crate::al::easy::n_94::Solution;
 
     use super::TreeNode;
 
@@ -69,7 +43,7 @@ mod tests {
     }
 
     #[test]
-    fn getVecByStr(){
+    fn get_vec_by_str(){
         let s = String::from("1,null,2,3");
 
         let arr :Vec<&str>= s.split(",").collect();

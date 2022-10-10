@@ -40,15 +40,15 @@ impl TreeNode {
                 //     queue.push_front(thL);
                 // }
                 let mut change = x.borrow_mut();
-                let thL = Rc::new(RefCell::new(TreeNode::new(array[i])));
-                change.left = Option::Some(thL.clone());
-                queue.push_front(thL);
+                let thl = Rc::new(RefCell::new(TreeNode::new(array[i])));
+                change.left = Option::Some(thl.clone());
+                queue.push_front(thl);
                 is_left = false;
             }else {
               let mut change = x.borrow_mut();
-              let thR = Rc::new(RefCell::new(TreeNode::new(array[i])));
-              change.right = Option::Some(thR.clone());
-              queue.push_front(thR);
+              let thr = Rc::new(RefCell::new(TreeNode::new(array[i])));
+              change.right = Option::Some(thr.clone());
+              queue.push_front(thr);
                 // if let Some(val) = array[i] {
                 //     let mut change = x.borrow_mut();
                 //     let thR = Rc::new(RefCell::new(TreeNode::new(array[i])));
@@ -102,7 +102,7 @@ mod tests {
     }
 
     #[test]
-    fn getVecByStr(){
+    fn get_vec_by_str(){
         let s = String::from("-1,0,3,-2,4,null,null,8");
 
         let arr :Vec<&str>= s.split(",").collect();

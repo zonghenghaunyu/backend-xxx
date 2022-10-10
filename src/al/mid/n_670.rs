@@ -1,7 +1,8 @@
-struct Solution {}
 
-impl Solution {
-    pub fn maximum_swap(num: i32) -> i32 {
+#[cfg(test)]
+mod tests {
+
+    fn maximum_swap(num: i32) -> i32 {
         let str = num.to_string();
 
         let mut temp: char = '0';
@@ -48,23 +49,23 @@ impl Solution {
         let my_int = ans.parse::<i32>().unwrap();
         my_int
     }
-}
 
-
-#[cfg(test)]
-mod tests {
     use std::{str::FromStr, convert::Infallible};
 
-    use crate::al::mid::n_670::Solution;
+    // use crate::al::mid::n_670::Solution;
 
+    #[test]
+    fn asdd(){
+        maximum_swap(5);
+    }
     #[test]
     fn it_works1() {
         // let a = Solution::maximum_swap(555);
-        let a = testResult().ok();
+        let a = test_result().ok();
         println!("{}",a.unwrap())
     }
 
-    pub fn testResult() -> Result<String,Infallible>{
+    pub fn test_result() -> Result<String,Infallible>{
         String::from_str("aaaaa")
       }
 }

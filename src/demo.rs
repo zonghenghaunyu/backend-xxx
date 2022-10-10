@@ -60,10 +60,10 @@ mod tests {
     }
 
     #[test]
-    fn getAddr(){
+    fn get_addr(){
         // let a = Box::new(4);
         let xx = vec![1,2,3];
-        let b = 5;
+        // let b = 5;
         println!("{:p}",xx.as_ptr());
         println!("{:p}",&*xx)
     }
