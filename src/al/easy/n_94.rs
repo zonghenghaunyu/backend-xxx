@@ -1,12 +1,11 @@
 
-use crate::al::tree::TreeNode;
 
 #[cfg(test)]
 mod tests {
     use std::{collections::VecDeque, cell::RefCell, rc::Rc};
+    use crate::al::tree::tree_node::TreeNode;
     // use crate::al::easy::n_94::Solution;
 
-    use super::TreeNode;
 
     #[test]
     fn it_works1() {

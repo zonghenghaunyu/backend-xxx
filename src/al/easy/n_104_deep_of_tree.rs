@@ -3,7 +3,7 @@
 mod tests {
     use std::cell::{RefCell};
     use std::rc::Rc;
-    use crate::al::tree::TreeNode;
+    use crate::al::tree::tree_node::TreeNode;
 
     #[test]
     fn it_works1() {

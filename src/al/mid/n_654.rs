@@ -5,7 +5,7 @@ mod tests {
 
     use std::cell::RefCell;
     use std::rc::Rc;
-    use crate::al::tree::TreeNode;
+    use crate::al::tree::tree_node::TreeNode;
 
     pub fn construct_maximum_binary_tree(nums: Vec<i32>) -> Option<Rc<RefCell<TreeNode>>> {
         fn set_node(nums : &[i32]) -> Option<Rc<RefCell<TreeNode>>>{

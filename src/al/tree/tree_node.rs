@@ -1,3 +1,4 @@
+
 use std::{cell::RefCell, rc::Rc, collections::VecDeque};
 
 
@@ -67,8 +68,7 @@ impl TreeNode {
 #[cfg(test)]
 mod tests {
     use std::{collections::VecDeque, cell::RefCell, rc::Rc};
-
-    use super::TreeNode;
+    use crate::al::tree::tree_node::TreeNode;
 
     #[test]
     fn it_works1() {
