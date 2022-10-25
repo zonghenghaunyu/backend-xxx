@@ -8,6 +8,11 @@ mod tests {
     #[test]
     fn it_works8() {
 
+        let a = 5;
+        let b = a + 1;
+        let c = b;
+
+        println!("{}",c);
         println!("buzhdiaofashengleshenle\n")
 
     }
