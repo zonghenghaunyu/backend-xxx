@@ -4,6 +4,14 @@ pub mod n_738;
 mod tests {
     use std::{rc::Rc, cell::Cell};
 
+    
+    #[test]
+    fn it_works8() {
+
+        println!("buzhdiaofashengleshenle\n")
+
+    }
+
     #[test]
     fn it_works5() {
 
