@@ -1,5 +1,5 @@
-use crate::al::tree::tree_node::TreeNode;
 
+#[derive(Debug)]
 struct AA{
     val : i32,
     id : i32
@@ -16,11 +16,9 @@ impl AA {
 
 #[cfg(test)]
 mod tests {
-    use std::{collections::VecDeque, cell::RefCell, rc::Rc};
-    use std::borrow::Borrow;
+    use std::{ cell::RefCell, rc::Rc};
     use crate::al::tree::traversing::AA;
 
-    use super::TreeNode;
 
     #[test]
     fn testse(){
@@ -35,6 +33,8 @@ mod tests {
         let rct = Rc::new(RefCell::new(AA::new(5,3)));
         let refc = RefCell::new(AA::new(5,3));
 
+        println!("{:?}",rct);
+        println!("{:?}",refc);
     }
     // https://www.jianshu.com/p/7a62dcc96304
     // #[test]
