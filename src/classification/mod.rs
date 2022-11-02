@@ -4,10 +4,7 @@ pub mod monotone_stack;
 mod tests {
 
     #[test]
-    fn testse(){
-
+    fn testse() {
         println!("aaaaaaaaaa")
-
     }
-
 }

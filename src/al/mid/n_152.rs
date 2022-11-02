@@ -1,25 +1,24 @@
-
-
 #[cfg(test)]
 mod tests {
 
     #[test]
     fn do_test() {
-        let s = vec![10, 5,-2,20, 20];
+        let s = vec![10, 5, -2, 20, 20];
         let a = max_product(s);
-        println!("{}",a)
+
+        println!("{}", a)
     }
     #[test]
     fn do_test2() {
-        let s = vec![-2,0,-1];
+        let s = vec![-2, 0, -1];
         let a = max_product_with_dp(s);
-        println!("{}",a)
+        println!("{}", a)
     }
     #[test]
     fn do_test3() {
-        let s = vec![-2,0,-1];
+        let s = vec![-2, 0, -1];
         let a = max_product_with_dp1(s);
-        println!("{}",a)
+        println!("{}", a)
     }
 
     fn max_product(nums: Vec<i32>) -> i32 {
@@ -28,7 +27,7 @@ mod tests {
         for i in 0..len {
             let mut cur_max = nums[i];
             let mut cache = nums[i];
-            for j in i+1..len {
+            for j in i + 1..len {
                 cache = cache * nums[j];
                 if cache > cur_max {
                     cur_max = cache;
@@ -77,12 +76,9 @@ mod tests {
             imax = nums[i].max(imax * nums[i]);
             imin = nums[i].min(imin * nums[i]);
             max = max.max(imax);
-            println!("{},{}",i,imax);
-            println!("{},{}",i,imin)
+            println!("{},{}", i, imax);
+            println!("{},{}", i, imin)
         }
         max
     }
-
-
-
 }

@@ -1,4 +1,4 @@
-pub fn printtest(){
+pub fn printtest() {
     println!("aaaaaa");
 }
 
@@ -41,7 +41,6 @@ impl List {
             }
         }
     }
-
 }
 
 impl Drop for List {
@@ -53,7 +52,6 @@ impl Drop for List {
         }
     }
 }
-
 
 // in first.rs
 #[cfg(test)]

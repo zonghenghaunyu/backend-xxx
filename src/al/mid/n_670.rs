@@ -1,4 +1,3 @@
-
 #[cfg(test)]
 mod tests {
 
@@ -6,7 +5,7 @@ mod tests {
         let str = num.to_string();
 
         let mut temp: char = '0';
-        let mut idx : usize = 0;
+        let mut idx: usize = 0;
         for x in str.chars() {
             idx += 1;
             if temp < x {
@@ -29,18 +28,17 @@ mod tests {
             nidx = 0;
             for x in str.chars() {
                 if nidx == 0 {
-                    nidx +=1 ;
+                    nidx += 1;
                     continue;
                 }
                 if nidx != idx {
                     str_last.push(x);
-                }else {
+                } else {
                     str_last.push(c);
                 }
                 nidx += 1;
             }
-
-        }else {
+        } else {
             for x in str.chars() {
                 str_last.push(x);
             }
@@ -50,22 +48,22 @@ mod tests {
         my_int
     }
 
-    use std::{str::FromStr, convert::Infallible};
+    use std::{convert::Infallible, str::FromStr};
 
     // use crate::al::mid::n_670::Solution;
 
     #[test]
-    fn asdd(){
+    fn asdd() {
         maximum_swap(5);
     }
     #[test]
     fn it_works1() {
         // let a = Solution::maximum_swap(555);
         let a = test_result().ok();
-        println!("{}",a.unwrap())
+        println!("{}", a.unwrap())
     }
 
-    pub fn test_result() -> Result<String,Infallible>{
+    pub fn test_result() -> Result<String, Infallible> {
         String::from_str("aaaaa")
-      }
+    }
 }

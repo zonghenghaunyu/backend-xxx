@@ -1,27 +1,22 @@
-
 #[derive(Debug)]
-struct AA{
-    val : i32,
-    id : i32
+struct AA {
+    val: i32,
+    id: i32,
 }
 
 impl AA {
-    pub fn new(val : i32,id:i32) -> Self{
-        AA{
-            val,
-            id
-        }
+    pub fn new(val: i32, id: i32) -> Self {
+        AA { val, id }
     }
 }
 
 #[cfg(test)]
 mod tests {
-    use std::{ cell::RefCell, rc::Rc};
     use crate::al::tree::traversing::AA;
-
+    use std::{cell::RefCell, rc::Rc};
 
     #[test]
-    fn testse(){
+    fn testse() {
         // let array = vec![Some(-1), Some(0), Some(3), Some(-2), Some(4), None, None, Some(8)];
         // let res = TreeNode::create_binary_tree(array);
         //
@@ -30,11 +25,11 @@ mod tests {
         //         println!("{}",s)
         //     }
         // }
-        let rct = Rc::new(RefCell::new(AA::new(5,3)));
-        let refc = RefCell::new(AA::new(5,3));
+        let rct = Rc::new(RefCell::new(AA::new(5, 3)));
+        let refc = RefCell::new(AA::new(5, 3));
 
-        println!("{:?}",rct);
-        println!("{:?}",refc);
+        println!("{:?}", rct);
+        println!("{:?}", refc);
     }
     // https://www.jianshu.com/p/7a62dcc96304
     // #[test]
@@ -70,19 +65,13 @@ mod tests {
     //
     // }
 
-
     //中
 
-
     //后
-
 
     //前
 
-
     //中
 
-
     //后
-
 }

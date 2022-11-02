@@ -4,19 +4,19 @@ mod tests {
     #[test]
     fn it_works() {
         let _s = vec![1, 100, 1, 1, 1, 100, 1, 1, 100, 1];
-        let _x = unique_paths(3,7);
-        let x = unique_paths2(3,7);
-        println!("{}",x)
+        let _x = unique_paths(3, 7);
+        let x = unique_paths2(3, 7);
+        println!("{}", x)
     }
     #[test]
     fn it_works2() {
         // [[0,0,0],[0,1,0],[0,0,0]]
-        let x = vec![0,0,0];
-        let x1 = vec![0,1,0];
-        let x2 = vec![0,0,0];
-        let ax = vec![x,x1,x2];
+        let x = vec![0, 0, 0];
+        let x1 = vec![0, 1, 0];
+        let x2 = vec![0, 0, 0];
+        let ax = vec![x, x1, x2];
         let a = unique_paths_with_obstacles(ax);
-        println!("{}",a)
+        println!("{}", a)
     }
 
     // [[1,0]]
@@ -31,7 +31,7 @@ mod tests {
                 for j in i..n {
                     array[0][j] = 0;
                 }
-                break
+                break;
             }
         }
         for i in 0..m {
@@ -40,7 +40,7 @@ mod tests {
                 for j in i..m {
                     array[j][0] = 0;
                 }
-                break
+                break;
             }
         }
         for i in 1..m {
@@ -51,10 +51,10 @@ mod tests {
                 }
             }
         }
-        array[(m-1)][(n-1)]
+        array[(m - 1)][(n - 1)]
     }
 
-    fn unique_paths(m : i32,n : i32) -> i32 {
+    fn unique_paths(m: i32, n: i32) -> i32 {
         let m = m as usize;
         let n = n as usize;
         let mut array = vec![vec![0; n]; m];
@@ -65,17 +65,17 @@ mod tests {
             for x in x.iter_mut() {
                 *x = 1;
             }
-            break
+            break;
         }
         for i in 1..m {
             for j in 1..n {
                 array[i][j] = array[(i - 1)][j] + array[i][(j - 1)];
             }
         }
-        array[(m-1)][(n-1)]
+        array[(m - 1)][(n - 1)]
     }
 
-    fn unique_paths2(m : i32,n : i32) -> i32 {
+    fn unique_paths2(m: i32, n: i32) -> i32 {
         let m = m as usize;
         let n = n as usize;
         let mut array = vec![vec![0; n]; m];
@@ -91,6 +91,6 @@ mod tests {
                 array[i][j] = array[(i - 1)][j] + array[i][(j - 1)];
             }
         }
-        array[(m-1)][(n-1)]
+        array[(m - 1)][(n - 1)]
     }
 }

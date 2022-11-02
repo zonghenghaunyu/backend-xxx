@@ -1,39 +1,33 @@
-
-
 #[cfg(test)]
 mod tests {
-    use std::{collections::VecDeque, cell::RefCell, rc::Rc};
     use crate::al::tree::tree_node::TreeNode;
+    use std::{cell::RefCell, collections::VecDeque, rc::Rc};
     // use crate::al::easy::n_94::Solution;
-
 
     #[test]
     fn it_works1() {
         // TreeNode bt = TreeNode.createBinaryTree(new Integer[]{-1,0,3,-2,4,null,null,8});
-        let array = vec![Some(1),None,Some(2),Some(3)];
+        let array = vec![Some(1), None, Some(2), Some(3)];
 
         let res = TreeNode::create_binary_tree(array);
-        println!("{:?}",res);
+        println!("{:?}", res);
         let mut queue = VecDeque::<Rc<RefCell<TreeNode>>>::new();
         // if let Some(x) = res{
         //     queue.push_back(x)
         // }
         queue.push_back(res.as_ref().unwrap().clone());
         while !queue.is_empty() {
-
-            if let Some(pop) = queue.pop_back(){
-
+            if let Some(pop) = queue.pop_back() {
                 let s = pop.borrow();
                 println!("{:?}", s.val);
                 let xxl = s.left.as_ref();
-                if let Some(aaa) = xxl{
+                if let Some(aaa) = xxl {
                     queue.push_back(aaa.clone())
                 }
                 let xxr = s.right.as_ref();
-                if let Some(aaar) = xxr{
+                if let Some(aaar) = xxr {
                     queue.push_back(aaar.clone())
                 }
-
             }
         }
 
@@ -42,10 +36,10 @@ mod tests {
     }
 
     #[test]
-    fn get_vec_by_str(){
+    fn get_vec_by_str() {
         let s = String::from("1,null,2,3");
 
-        let arr :Vec<&str>= s.split(",").collect();
+        let arr: Vec<&str> = s.split(",").collect();
 
         let mut rtl = Vec::<String>::new();
         let mut str_last: Vec<char> = Vec::new();
@@ -84,7 +78,6 @@ mod tests {
             }
             str_last.push(',');
         }
-        println!("{:?}",String::from_iter(str_last))
-
+        println!("{:?}", String::from_iter(str_last))
     }
 }

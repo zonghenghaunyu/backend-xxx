@@ -1,4 +1,3 @@
-
 pub struct List<'a, T> {
     head: Link<T>,
     tail: Option<&'a mut Node<T>>, // NEW!
@@ -13,7 +12,10 @@ struct Node<T> {
 
 impl<'a, T> List<'a, T> {
     pub fn new() -> Self {
-        List { head: None, tail: None }
+        List {
+            head: None,
+            tail: None,
+        }
     }
 
     pub fn push(&'a mut self, elem: T) {
@@ -40,46 +42,43 @@ impl<'a, T> List<'a, T> {
         self.head.take().map(|head| {
             let head = *head;
             self.head = head.next;
-    
+
             if self.head.is_none() {
                 self.tail = None;
             }
-    
+
             head.elem
         })
     }
-
-
-
 }
 
 mod test {
     #[test]
     fn basics() {
-    //     let mut list = List::new();
+        //     let mut list = List::new();
 
-    //     // Check empty list behaves right
-    //     assert_eq!(list.pop(), None);
+        //     // Check empty list behaves right
+        //     assert_eq!(list.pop(), None);
 
-    //     // Populate list
-    //     list.push(1);
-    //     list.push(2);
-    //     list.push(3);
+        //     // Populate list
+        //     list.push(1);
+        //     list.push(2);
+        //     list.push(3);
 
-    //     // Check normal removal
-    //     assert_eq!(list.pop(), Some(1));
-    //     assert_eq!(list.pop(), Some(2));
+        //     // Check normal removal
+        //     assert_eq!(list.pop(), Some(1));
+        //     assert_eq!(list.pop(), Some(2));
 
-    //     // Push some more just to make sure nothing's corrupted
-    //     list.push(4);
-    //     list.push(5);
+        //     // Push some more just to make sure nothing's corrupted
+        //     list.push(4);
+        //     list.push(5);
 
-    //     // Check normal removal
-    //     assert_eq!(list.pop(), Some(3));
-    //     assert_eq!(list.pop(), Some(4));
+        //     // Check normal removal
+        //     assert_eq!(list.pop(), Some(3));
+        //     assert_eq!(list.pop(), Some(4));
 
-    //     // Check exhaustion
-    //     assert_eq!(list.pop(), Some(5));
-    //     assert_eq!(list.pop(), None);
+        //     // Check exhaustion
+        //     assert_eq!(list.pop(), Some(5));
+        //     assert_eq!(list.pop(), None);
     }
 }
