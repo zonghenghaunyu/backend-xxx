@@ -9,15 +9,22 @@ pub fn partition(s: String) -> Vec<Vec<String>> {
     ans
 }
 
-fn inner_way(ans:&mut Vec<Vec<String>>,inner : &mut Vec<String>,chars : &Vec<char>,start_idx : usize){
-
+fn inner_way(
+    ans: &mut Vec<Vec<String>>,
+    inner: &mut Vec<String>,
+    chars: &Vec<char>,
+    start_idx: usize,
+) {
     let len = chars.len();
     if start_idx == len {
         ans.push(inner.clone())
     }
 
     for i in start_idx..len {
-        let s = chars[start_idx..=i].iter().map(|x| *x).collect::<Vec<char>>();
+        let s = chars[start_idx..=i]
+            .iter()
+            .map(|x| *x)
+            .collect::<Vec<char>>();
         if is_right(&s) {
             inner.push(s.iter().collect::<String>());
             inner_way(ans, inner, chars, i + 1);
@@ -26,14 +33,13 @@ fn inner_way(ans:&mut Vec<Vec<String>>,inner : &mut Vec<String>,chars : &Vec<cha
     }
 }
 
-fn is_right(arr: &Vec<char>) -> bool{
-
+fn is_right(arr: &Vec<char>) -> bool {
     let len = arr.len();
     let mid = len / 2;
-    
+
     for i in 0..mid {
         if arr[i] != arr[len - 1 - i] {
-            return false
+            return false;
         }
     }
     true
@@ -41,7 +47,7 @@ fn is_right(arr: &Vec<char>) -> bool{
 
 #[cfg(test)]
 mod test {
-    use super::{is_right,partition};
+    use super::{is_right, partition};
 
     #[test]
     fn test_partition() {
@@ -49,13 +55,12 @@ mod test {
         println!("{:?}", x)
     }
 
-
     #[test]
     fn test_is_right() {
         // let x = partition("aab".to_string());
         // println!("{:?}", x)
-        let s = vec!['d','b','d','b','a'];
+        let s = vec!['d', 'b', 'd', 'b', 'a'];
         let sd = is_right(&s);
-        println!("{}",sd)
+        println!("{}", sd)
     }
 }

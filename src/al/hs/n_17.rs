@@ -1,8 +1,7 @@
 use std::collections::HashMap;
 
-struct Solution{}
+struct Solution {}
 impl Solution {
-    
     pub fn letter_combinations(digits: String) -> Vec<String> {
         let map = Self::get_map();
         let s: Vec<char> = digits.chars().into_iter().collect();
@@ -39,7 +38,6 @@ impl Solution {
         ans
     }
 
-    
     fn get_map() -> HashMap<char, Vec<char>> {
         let mut map = HashMap::new();
         map.insert('2', vec!['a', 'b', 'c']);
@@ -58,8 +56,6 @@ impl Solution {
 mod tests {
     use super::Solution;
 
-
-
     #[test]
     fn it_works() {
         let a = Solution::letter_combinations("23".to_string());
@@ -69,8 +65,6 @@ mod tests {
         println!("{:?}", a)
     }
 }
-
-
 
 // Line 22, Char 34: no function or associated item named `from_iter` found for struct `std::string::String` in the current scope (solution.rs)
 //    |

@@ -1,7 +1,4 @@
-
-
 pub fn restore_ip_addresses(s: String) -> Vec<String> {
-
     let mut ans = Vec::<String>::new();
     let chars = s.chars().into_iter().collect::<Vec<char>>();
 
@@ -12,11 +9,16 @@ pub fn restore_ip_addresses(s: String) -> Vec<String> {
     ans
 }
 
-fn inner_way(level : usize,ans : &mut Vec<String>,tmp : &mut Vec<Vec<char>>,chars : &Vec<char>,idx : usize){
-
+fn inner_way(
+    level: usize,
+    ans: &mut Vec<String>,
+    tmp: &mut Vec<Vec<char>>,
+    chars: &Vec<char>,
+    idx: usize,
+) {
     if level == 4 {
         let x = chars[idx..].iter().map(|a| *a).collect::<Vec<char>>();
-        if is_right(&x){
+        if is_right(&x) {
             tmp.push(x);
             let mut s = String::new();
             for i in 0..4 {
@@ -34,9 +36,8 @@ fn inner_way(level : usize,ans : &mut Vec<String>,tmp : &mut Vec<Vec<char>>,char
     let len = chars.len();
 
     for i in idx..len {
-
-        let inn = chars[idx..=i].iter().map(|a| * a).collect::<Vec<char>>();
-        if is_right(&inn){
+        let inn = chars[idx..=i].iter().map(|a| *a).collect::<Vec<char>>();
+        if is_right(&inn) {
             tmp.push(inn);
             inner_way(level + 1, ans, tmp, chars, i + 1);
             tmp.pop();
@@ -44,7 +45,7 @@ fn inner_way(level : usize,ans : &mut Vec<String>,tmp : &mut Vec<Vec<char>>,char
     }
 }
 
-fn is_right(arr : &Vec<char>) -> bool {
+fn is_right(arr: &Vec<char>) -> bool {
     let s = arr.iter().collect::<String>();
 
     let option = s.parse::<i32>();
@@ -52,17 +53,13 @@ fn is_right(arr : &Vec<char>) -> bool {
         Ok(num) => {
             if num <= 255 {
                 true
-            }else {
+            } else {
                 false
             }
-        },
-        Err(_e) => {
-            false
         }
+        Err(_e) => false,
     }
-
 }
-
 
 #[cfg(test)]
 mod test {
