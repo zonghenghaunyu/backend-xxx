@@ -1,36 +1,19 @@
-#[derive(Debug)]
-struct AA {
-    val: i32,
-    id: i32,
-}
-
-impl AA {
-    pub fn new(val: i32, id: i32) -> Self {
-        AA { val, id }
-    }
-}
-
 #[cfg(test)]
 mod tests {
-    use crate::al::tree::traversing::AA;
-    use std::{cell::RefCell, rc::Rc};
+    // use std::{cell::RefCell, rc::Rc};
+    // use crate::al::tree::tree_node::TreeNode;
 
-    #[test]
-    fn testse() {
-        // let array = vec![Some(-1), Some(0), Some(3), Some(-2), Some(4), None, None, Some(8)];
-        // let res = TreeNode::create_binary_tree(array);
-        //
-        // if let Some(rr) = res{
-        //     if let Some(s) = rr.val{
-        //         println!("{}",s)
-        //     }
-        // }
-        let rct = Rc::new(RefCell::new(AA::new(5, 3)));
-        let refc = RefCell::new(AA::new(5, 3));
-
-        println!("{:?}", rct);
-        println!("{:?}", refc);
-    }
+    // #[test]
+    // fn testse() {
+    //     let array = vec![Some(-1), Some(0), Some(3), Some(-2), Some(4), None, None, Some(8)];
+    //     let res = TreeNode::create_binary_tree(array);
+    //
+    //     if let Some(rr) = res{
+    //         if let Some(s) = rr.borrow().val{
+    //             println!("{}",s)
+    //         }
+    //     }
+    // }
     // https://www.jianshu.com/p/7a62dcc96304
     // #[test]
     // fn it_works1() {

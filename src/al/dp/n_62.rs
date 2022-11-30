@@ -93,4 +93,51 @@ mod tests {
         }
         array[(m - 1)][(n - 1)]
     }
+
+    #[test]
+    fn it_worksxxxx() {
+
+        let vec = vec![vec![0,0,0,0],vec![0,1,1,0],vec![0,0,0,0]];
+        let s = unique_paths_with_obstacles111(vec);
+
+        println!("{}", s)
+    }
+
+    pub fn unique_paths_with_obstacles111(obstacle_grid: Vec<Vec<i32>>) -> i32 {
+
+        let mut arr = obstacle_grid.clone();
+        let w = obstacle_grid.len();
+        let h = obstacle_grid[0].len();
+        //arr[i][j] = arr[i-1][j] + arr[i][j-1]
+        for i in 0..w {
+            if obstacle_grid[i][0] == 1 {
+                for j in i..w {
+                    arr[j][0] = 0;
+                }
+                break;
+            }
+            arr[i][0] = 1;
+        }
+        for i in 0..h {
+            if obstacle_grid[0][i] == 1{
+                for j in i..h {
+                    arr[0][j] = 0;
+                }
+                break;
+            }
+            arr[0][i] = 1;
+        }
+
+        for i in 1..w {
+            for j in 1..h {
+                if obstacle_grid[i][j] == 1 {
+                    arr[i][j] = 0;
+                }else {
+                    arr[i][j] = arr[i - 1][j] + arr[i][j-1];
+                }
+            }
+        }
+
+        arr[w - 1][h - 1]
+    }
 }

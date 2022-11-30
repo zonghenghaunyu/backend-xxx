@@ -37,6 +37,7 @@
             let slen = first.len();
 
 
+            println!("{:?},{},{}",second,flen,slen)
        }
 
         

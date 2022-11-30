@@ -17,12 +17,12 @@ pub fn trap(height: Vec<i32>) -> i32 {
     let len = arr.len();
     let max = arr[0].clone();
 
-    let maxIdxs = map.get(&max).unwrap();
-    let mut left = maxIdxs[0];
-    let mut right = maxIdxs[maxIdxs.len() - 1];
+    let max_idxs = map.get(&max).unwrap();
+    let mut left = max_idxs[0];
+    let mut right = max_idxs[max_idxs.len() - 1];
 
 
-    let mut max_not_unique = maxIdxs.len() != 1;
+    let mut max_not_unique = max_idxs.len() != 1;
 
     for i in 0..len {
         if max_not_unique {
@@ -88,12 +88,12 @@ pub fn trap(height: Vec<i32>) -> i32 {
                 right = list[list.len() - 1];
             }
             if left < left_wall {
-                if (used_idx.contains(&(left + 1)) && used_idx.contains(&(left_wall - 1))) {
+                if  used_idx.contains(&(left + 1)) && used_idx.contains(&(left_wall - 1)) {
                     continue;
                 }
                 let left_tall = height[left];
                 for x in (left + 1)..left_wall {
-                    if (used_idx.contains(&x)) {
+                    if used_idx.contains(&x) {
                         continue;
                     }  
                     ans = ans + left_tall - height[i];
@@ -103,12 +103,12 @@ pub fn trap(height: Vec<i32>) -> i32 {
             }
 
             if right > right_wall {
-                if (used_idx.contains(&(right_wall + 1)) && used_idx.contains(&(right - 1))) {
+                if used_idx.contains(&(right_wall + 1)) && used_idx.contains(&(right - 1)) {
                     continue;
                 }
                 let right_tall = height[right];
                 for x in (left + 1)..left_wall {
-                    if (used_idx.contains(&x)) {
+                    if used_idx.contains(&x) {
                         continue;
                     }  
                     ans = ans + right_tall - height[i];
