@@ -81,6 +81,7 @@ mod tests {
 
         let res = TreeNode::create_binary_tree(array);
         println!("{:?}", res);
+        println!("==========================================================================");
         let mut queue = VecDeque::<Rc<RefCell<TreeNode>>>::new();
         if let Some(x) = res {
             queue.push_back(x)
@@ -97,7 +98,18 @@ mod tests {
                 if let Some(aaar) = xxr {
                     queue.push_back(aaar.clone())
                 }
+
+                //println
+                // let mut queue_inner = Vec::<Option<i32>>::new();
+                // for x in &queue {
+                //     let a = x.borrow();
+                //     println!("queue:{:?}",a.val);
+                //     queue_inner.push(a.val)
+                // }
+                // println!("queue:{:?}",queue_inner)
             }
+
+
         }
     }
 
