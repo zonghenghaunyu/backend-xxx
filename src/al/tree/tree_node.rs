@@ -18,44 +18,53 @@ impl TreeNode {
     }
 
     pub fn create_binary_tree(array: Vec<Option<i32>>) -> Option<Rc<RefCell<TreeNode>>> {
-        if array.len() == 0 {
+        let len = array.len();
+        if len == 0 {
             return Option::None;
         }
         let root = Rc::new(RefCell::new(TreeNode::new(array[0])));
 
         let mut queue = VecDeque::<Rc<RefCell<TreeNode>>>::new();
         queue.push_front(root.clone());
-        let mut is_left = true;
-        for i in 1..array.len() {
+        // let mut is_left = true;
+        let mut idx = 1;
+        loop {
             let last = queue.pop_back();
-            if let Some(x) = last {
-                if is_left {
-                    // if let Some(val) = array[i] {
-                    //     let mut change = x.borrow_mut();
-                    //     let thL = Rc::new(RefCell::new(TreeNode::new(array[i])));
-                    //     change.left = Option::Some(thL.clone());
-                    //     queue.push_front(thL);
-                    // }
-                    let mut change = x.borrow_mut();
-                    let thl = Rc::new(RefCell::new(TreeNode::new(array[i])));
-                    change.left = Option::Some(thl.clone());
-                    queue.push_front(thl);
-                    is_left = false;
-                } else {
-                    let mut change = x.borrow_mut();
-                    let thr = Rc::new(RefCell::new(TreeNode::new(array[i])));
-                    change.right = Option::Some(thr.clone());
-                    queue.push_front(thr);
-                    // if let Some(val) = array[i] {
-                    //     let mut change = x.borrow_mut();
-                    //     let thR = Rc::new(RefCell::new(TreeNode::new(array[i])));
-                    //     change.right = Option::Some(thR.clone());
-                    //     queue.push_front(thR);
-                    // }
-                    is_left = true;
+            if let Some(x) = last{
+                let mut c_node = x.borrow_mut();
+                //left
+                c_node.left = Some(Rc::new(RefCell::new(TreeNode::new(array[idx]))));
+                idx += 1;
+                if idx >= len {
+                    break;
+                }
+                queue.push_front(c_node.left.as_ref().unwrap().clone());
+                //right
+                c_node.right = Some(Rc::new(RefCell::new(TreeNode::new(array[idx]))));
+                queue.push_front(c_node.right.as_ref().unwrap().clone());
+                idx += 1;
+                if idx == len {
+                    break;
                 }
             }
         }
+        // for i in 1..array.len() {
+        //     let last = queue.pop_back();
+        //     if let Some(x) = last {
+        //         if i % 2 == 1 {
+        //             let mut change = x.borrow_mut();
+        //             let thl = Rc::new(RefCell::new(TreeNode::new(array[i])));
+        //             change.left = Option::Some(thl.clone());
+        //             queue.push_front(thl);
+        //             // is_left = false;
+        //         } else {
+        //             let mut change = x.borrow_mut();
+        //             let thr = Rc::new(RefCell::new(TreeNode::new(array[i])));
+        //             change.right = Option::Some(thr.clone());
+        //             queue.push_front(thr);
+        //         }
+        //     }
+        // }
         Some(root.clone())
     }
 }
@@ -84,7 +93,7 @@ mod tests {
         println!("==========================================================================");
         let mut queue = VecDeque::<Rc<RefCell<TreeNode>>>::new();
         if let Some(x) = res {
-            queue.push_back(x)
+            queue.push_front(x)
         }
         while !queue.is_empty() {
             if let Some(pop) = queue.pop_back() {
@@ -92,24 +101,13 @@ mod tests {
                 println!("{:?}", s.val);
                 let xxl = s.left.as_ref();
                 if let Some(aaa) = xxl {
-                    queue.push_back(aaa.clone())
+                    queue.push_front(aaa.clone())
                 }
                 let xxr = s.right.as_ref();
                 if let Some(aaar) = xxr {
-                    queue.push_back(aaar.clone())
+                    queue.push_front(aaar.clone())
                 }
-
-                //println
-                // let mut queue_inner = Vec::<Option<i32>>::new();
-                // for x in &queue {
-                //     let a = x.borrow();
-                //     println!("queue:{:?}",a.val);
-                //     queue_inner.push(a.val)
-                // }
-                // println!("queue:{:?}",queue_inner)
             }
-
-
         }
     }
 
