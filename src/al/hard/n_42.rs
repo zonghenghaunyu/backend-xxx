@@ -88,7 +88,7 @@ pub fn trap(height: Vec<i32>) -> i32 {
                 right = list[list.len() - 1];
             }
             if left < left_wall {
-                if  used_idx.contains(&(left + 1)) && used_idx.contains(&(left_wall - 1)) {
+                if (used_idx.contains(&(left + 1)) && used_idx.contains(&(left_wall - 1))) {
                     continue;
                 }
                 let left_tall = height[left];

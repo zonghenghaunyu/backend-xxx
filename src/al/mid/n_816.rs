@@ -28,13 +28,13 @@
 
             let tuple = all[i].clone();
             let first = tuple.0;
-            let second = tuple.1;
+            let _second = tuple.1;
 
-            let flen = first.len();
+            let _flen = first.len();
 
             
 
-            let slen = first.len();
+            let _slen = first.len();
 
 
             println!("{:?},{},{}",second,flen,slen)
