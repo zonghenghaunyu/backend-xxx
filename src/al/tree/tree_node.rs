@@ -30,7 +30,7 @@ impl TreeNode {
         let mut idx = 1;
         loop {
             let last = queue.pop_back();
-            if let Some(x) = last{
+            if let Some(x) = last {
                 let mut c_node = x.borrow_mut();
                 //left
                 c_node.left = Some(Rc::new(RefCell::new(TreeNode::new(array[idx]))));

@@ -8,10 +8,7 @@ pub struct ListNode {
 impl ListNode {
     #[inline]
     fn new(val: i32) -> Self {
-        ListNode {
-            next: None,
-            val,
-        }
+        ListNode { next: None, val }
     }
     fn with_vec(arr: Vec<i32>) -> Self {
         let mut root: Option<Box<ListNode>> = None;
@@ -30,13 +27,13 @@ impl ListNode {
 #[cfg(test)]
 mod tests {
     use crate::al::hard::n_23::ListNode;
+    use std::cmp::Reverse;
     use std::collections::BinaryHeap;
-    use std::cmp::{Ordering, Reverse};
 
     #[test]
     fn rever() {
         let mut heap = BinaryHeap::new();
-        let mut x = vec![11, 31, 9, 87, 90, 61, 23, 69, 23];
+        let x = vec![11, 31, 9, 87, 90, 61, 23, 69, 23];
         println!("{:?}", x);
         for i in x {
             heap.push(i);
@@ -78,7 +75,10 @@ mod tests {
         ans.next
     }
 
-
+    #[test]
+    fn merge_k_lists_test() {
+        merge_k_lists(vec![]);
+    }
     pub fn merge_k_lists(lists: Vec<Option<Box<ListNode>>>) -> Option<Box<ListNode>> {
         let mut ans = Box::new(ListNode::new(0));
         let mut pans = &mut ans;

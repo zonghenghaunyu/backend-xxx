@@ -1,8 +1,9 @@
+mod n_020;
+mod n_086;
 mod n_152;
 pub mod n_654;
 mod n_670;
 mod n_816;
-mod n_020;
 #[cfg(test)]
 mod tests {
     fn print_number(maybe_number: Option<u16>) {

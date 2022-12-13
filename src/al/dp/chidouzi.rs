@@ -10,7 +10,7 @@ mod tests {
         let arr = vec![a1, a2, a3];
 
         let i = chi_dou_zi(arr);
-
+        chi_dou_zi2(vec![]);
         println!("{}", i)
     }
 
@@ -49,10 +49,14 @@ mod tests {
         stack.push_front((i, j));
         while i < w || j < h {
             match stack.pop_front() {
-                None => { break; }
-                Some((a,b)) => {
+                None => {
+                    break;
+                }
+                Some((a, b)) => {
                     let num = arr[a][b];
-
+                    println!("{num}");
+                    j += 1;
+                    i += 1;
                 }
             }
         }

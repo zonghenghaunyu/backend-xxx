@@ -1,7 +1,6 @@
 use std::collections::{HashMap, HashSet};
 
 pub fn trap(height: Vec<i32>) -> i32 {
-
     let map = get_map(&height);
 
     if map.len() == 1 {
@@ -9,7 +8,7 @@ pub fn trap(height: Vec<i32>) -> i32 {
     }
 
     let mut arr = height.clone();
-    arr.sort_by(|a,b| b.partial_cmp(a).unwrap());
+    arr.sort_by(|a, b| b.partial_cmp(a).unwrap());
 
     let mut used_idx = HashSet::<usize>::new();
 
@@ -20,7 +19,6 @@ pub fn trap(height: Vec<i32>) -> i32 {
     let max_idxs = map.get(&max).unwrap();
     let mut left = max_idxs[0];
     let mut right = max_idxs[max_idxs.len() - 1];
-
 
     let mut max_not_unique = max_idxs.len() != 1;
 
@@ -45,9 +43,9 @@ pub fn trap(height: Vec<i32>) -> i32 {
                 list.push(*ele)
             }
         }
-        if list.len() == 0{
+        if list.len() == 0 {
             continue;
-        }else if list.len() == 1{
+        } else if list.len() == 1 {
             let lower = list[0];
             let tall = height[lower];
             if lower < left {
@@ -55,7 +53,7 @@ pub fn trap(height: Vec<i32>) -> i32 {
                     continue;
                 }
                 for x in (lower + 1)..left {
-                    if used_idx.contains(&x){
+                    if used_idx.contains(&x) {
                         continue;
                     }
                     ans = ans + tall - height[x];
@@ -63,12 +61,12 @@ pub fn trap(height: Vec<i32>) -> i32 {
                 }
                 used_idx.insert(lower);
                 left = lower;
-            }else {
+            } else {
                 if used_idx.contains(&(right + 1)) && used_idx.contains(&(lower - 1)) {
                     continue;
                 }
                 for x in (right + 1)..lower {
-                    if used_idx.contains(&x){
+                    if used_idx.contains(&x) {
                         continue;
                     }
                     ans = ans + tall - height[x];
@@ -77,25 +75,25 @@ pub fn trap(height: Vec<i32>) -> i32 {
                 used_idx.insert(lower);
                 right = lower;
             }
-        }else {
+        } else {
             list.sort();
             let left_wall = left;
             let right_wall = right;
             if left > list[0] {
                 left = list[0];
             }
-            if right < list[list.len() - 1]{
+            if right < list[list.len() - 1] {
                 right = list[list.len() - 1];
             }
             if left < left_wall {
-                if (used_idx.contains(&(left + 1)) && used_idx.contains(&(left_wall - 1))) {
+                if used_idx.contains(&(left + 1)) && used_idx.contains(&(left_wall - 1)) {
                     continue;
                 }
                 let left_tall = height[left];
                 for x in (left + 1)..left_wall {
                     if used_idx.contains(&x) {
                         continue;
-                    }  
+                    }
                     ans = ans + left_tall - height[i];
                     used_idx.insert(x);
                 }
@@ -110,7 +108,7 @@ pub fn trap(height: Vec<i32>) -> i32 {
                 for x in (left + 1)..left_wall {
                     if used_idx.contains(&x) {
                         continue;
-                    }  
+                    }
                     ans = ans + right_tall - height[i];
                     used_idx.insert(x);
                 }
@@ -118,13 +116,12 @@ pub fn trap(height: Vec<i32>) -> i32 {
             }
         }
 
-
         used_idx.insert(left);
         used_idx.insert(right);
     }
 
-    fn get_map(arr: & Vec<i32>) -> HashMap<i32,Vec<usize>>{
-        let mut map = HashMap::<i32,Vec<usize>>::new();
+    fn get_map(arr: &Vec<i32>) -> HashMap<i32, Vec<usize>> {
+        let mut map = HashMap::<i32, Vec<usize>>::new();
         let len = arr.len();
         for i in 0..len {
             let op = map.get(&arr[i]);
@@ -133,12 +130,12 @@ pub fn trap(height: Vec<i32>) -> i32 {
                     let mut nr = x.clone();
                     nr.push(i);
                     map.insert(arr[i], nr);
-                },
+                }
                 None => {
                     let mut xx = Vec::new();
                     xx.push(i);
                     map.insert(arr[i], xx);
-                },
+                }
             }
         }
         map
@@ -147,8 +144,8 @@ pub fn trap(height: Vec<i32>) -> i32 {
     ans
 }
 
-pub fn get_map(arr: & Vec<i32>) -> HashMap<i32,Vec<usize>>{
-    let mut map = HashMap::<i32,Vec<usize>>::new();
+pub fn get_map(arr: &Vec<i32>) -> HashMap<i32, Vec<usize>> {
+    let mut map = HashMap::<i32, Vec<usize>>::new();
     let len = arr.len();
     for i in 0..len {
         let op = map.get(&arr[i]);
@@ -157,17 +154,16 @@ pub fn get_map(arr: & Vec<i32>) -> HashMap<i32,Vec<usize>>{
                 let mut nr = x.clone();
                 nr.push(i);
                 map.insert(arr[i], nr);
-            },
+            }
             None => {
                 let mut xx = Vec::new();
                 xx.push(i);
                 map.insert(arr[i], xx);
-            },
+            }
         }
     }
     map
 }
-
 
 #[cfg(test)]
 mod tests {

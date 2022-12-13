@@ -1,4 +1,3 @@
-
 #[cfg(test)]
 mod tests {
 
@@ -6,11 +5,10 @@ mod tests {
     fn it_works1() {
         let vec1 = vec![10, 20, 30, 5, 10, 50];
         let a = max_ascending_sum(vec1);
-        println!("{}",a)
+        println!("{}", a)
     }
 
     pub fn max_ascending_sum(nums: Vec<i32>) -> i32 {
-
         let mut last_num = nums.get(0).unwrap();
 
         let mut sum = 0;
