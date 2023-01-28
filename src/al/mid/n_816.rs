@@ -1,4 +1,3 @@
-
 pub fn ambiguous_coordinates(s: String) -> Vec<String> {
     let arr: Vec<char> = s.chars().into_iter().collect();
 

@@ -1,9 +1,10 @@
 pub mod n_104_deep_of_tree;
+pub mod n_121;
 pub mod n_1470;
 pub mod n_1800;
-pub mod n_94;
+pub mod n_2309;
 pub mod n_26;
-pub mod n_121;
+pub mod n_94;
 
 //遍历二维数组
 #[cfg(test)]
@@ -24,21 +25,20 @@ mod tests {
         // }
     }
 
-    fn myway_two(nums : Vec<Vec<i32>>){
+    fn myway_two(nums: Vec<Vec<i32>>) {
         let mut ans = Vec::<i32>::new();
         if nums.len() == 0 {
             return;
         }
         let w = nums[0].len();
         let h = nums.len();
-        
+
         let mut top = 0;
         let mut bottom = h - 1;
         let mut left = 0;
         let mut right = w - 1;
         let mut cache = Vec::<i32>::new();
         while top < bottom && left < right {
-            
             for i in left..right {
                 cache.push(nums[top][i])
             }
@@ -51,10 +51,10 @@ mod tests {
             for i in (top + 1..=bottom).rev() {
                 cache.push(nums[i][left])
             }
-            top+=1;
-            right-=1;
-            bottom-=1;
-            left+=1;
+            top += 1;
+            right -= 1;
+            bottom -= 1;
+            left += 1;
         }
         if top == bottom {
             for i in left..=right {
@@ -66,8 +66,8 @@ mod tests {
                 cache.push(nums[i][right])
             }
         }
-        println!("{:?}",cache);
-        println!("{}",cache.len())
+        println!("{:?}", cache);
+        println!("{}", cache.len())
     }
 
     fn traversal_array2(nums: Vec<Vec<i32>>) {

@@ -11,15 +11,21 @@
 // 输出: [[1,2,6], [1,3,5], [2,3,4]]
 
 pub fn combination_sum_xxxx(k: i32, n: i32) -> Vec<Vec<i32>> {
-
     let mut ans = Vec::<Vec<i32>>::new();
 
     let mut cache = Vec::<i32>::new();
-    fn inner(ans : &mut Vec<Vec<i32>>,cache : & mut Vec<i32>,start : usize,end : usize,cur_level : i32,k: i32,n: i32){
-
+    fn inner(
+        ans: &mut Vec<Vec<i32>>,
+        cache: &mut Vec<i32>,
+        start: usize,
+        end: usize,
+        cur_level: i32,
+        k: i32,
+        n: i32,
+    ) {
         if cur_level == k {
-            let sum : i32  = cache.iter().sum();
-            if sum == n{
+            let sum: i32 = cache.iter().sum();
+            if sum == n {
                 ans.push(cache.clone())
             }
             return;
@@ -34,7 +40,6 @@ pub fn combination_sum_xxxx(k: i32, n: i32) -> Vec<Vec<i32>> {
 
     inner(&mut ans, &mut cache, 1, 9, 0, k, n);
     ans
-
 }
 
 pub fn combination_sum3(k: i32, n: i32) -> Vec<Vec<i32>> {
@@ -77,7 +82,7 @@ mod test {
 
     #[test]
     fn test_empty() {
-        let x = combination_sum_xxxx(3,7);
+        let x = combination_sum_xxxx(3, 7);
         println!("{:?}", x)
     }
 }

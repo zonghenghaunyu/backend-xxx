@@ -7,27 +7,20 @@ mod n_746;
 mod tests {
     use std::f32::consts::E;
 
-
     #[test]
     fn it_works() {
         let mut s = vec![1, 100, 1, 1, 1, 100, 1, 1, 100, 1];
         // let mut s = vec![4,3,5,67,8,66,5,23];
         quick_sort(&mut s);
 
-
-        println!("{:?}",s);
+        println!("{:?}", s);
     }
 
-    fn quick_sort(arr :& mut Vec<i32>){
-
-        quick_inner(arr,0,arr.len() - 1 );
-
+    fn quick_sort(arr: &mut Vec<i32>) {
+        quick_inner(arr, 0, arr.len() - 1);
     }
 
-
-
-    fn quick_inner(arr :& mut Vec<i32>,start:usize,end : usize){
-
+    fn quick_inner(arr: &mut Vec<i32>, start: usize, end: usize) {
         if start > end {
             return;
         }
@@ -37,7 +30,6 @@ mod tests {
 
         let temp = arr[high];
         while low < high {
-            
             while low < high && arr[low] <= temp {
                 low += 1;
             }
@@ -48,20 +40,16 @@ mod tests {
             if low < high {
                 let t = arr[low];
                 arr[low] = arr[high];
-                arr[high] = t; 
+                arr[high] = t;
             }
-            println!("{:?}",arr)
-
+            println!("{:?}", arr)
         }
         arr[end] = arr[high];
         arr[high] = temp;
         if high > 0 {
             quick_inner(arr, start, high - 1);
         }
-         
-         quick_inner(arr, high + 1, end)
 
-
+        quick_inner(arr, high + 1, end)
     }
-
-} 
+}
