@@ -1,6 +1,9 @@
 mod n_020;
 mod n_086;
 mod n_152;
+mod n_1664;
+mod n_1828;
+mod n_373;
 pub mod n_654;
 mod n_670;
 mod n_816;
