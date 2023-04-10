@@ -7,6 +7,7 @@ pub mod first;
 pub mod forthtwo;
 pub mod second;
 pub mod third;
+pub mod some;
 
 #[cfg(test)]
 mod tests {
