@@ -2,6 +2,8 @@
 mod test {
     use std::process::id;
 
+    use crate::al;
+
     /*
     给定一个数组 prices ，它的第 i 个元素 prices[i] 表示一支给定股票第 i 天的价格。
     你只能选择 某一天 买入这只股票，并选择在 未来的某一个不同的日子 卖出该股票。设计一个算法来计算你所能获取的最大利润。
@@ -22,8 +24,41 @@ mod test {
      */
     #[test]
     pub fn is_work() {
-        let arr = vec![7, 1, 5, 3, 6, 4];
-        print!("is work\n{}\n", max_profit(arr))
+        let arr = vec![7, 1, 5, 3, 6,7, 4];
+        print!("is work\n{}\n", all_max_profit(arr))
+    }
+
+
+    //calcualte max profit ,before buy you max sell the old stone
+    pub fn all_max_profit(prices: Vec<i32>) -> i32{
+
+        let mut pri = prices[0];
+        let mut cur_prifit = 0;
+        let mut all_prifit = 0;
+        //4,3,6,7,3,1,7
+        for ele in prices {
+            if ele > pri{
+                cur_prifit = cur_prifit+ele - pri;
+            }else {
+                all_prifit += cur_prifit;
+                cur_prifit = 0;
+            }
+            pri = ele;
+        }
+        all_prifit
+    }
+    pub fn max_profit1(prices: Vec<i32>) -> i32{
+
+        let mut min = prices[0];
+        let mut max_prifit = 0;
+        for ele in prices {
+            if ele < min {
+                min = ele;
+            }
+            max_prifit = max_prifit.max(ele - min);
+        }
+
+        max_prifit
     }
 
     //动态规划 前i天的最大收益 = max{前i-1天的最大收益，第i天的价格-前i-1天中的最小价格}

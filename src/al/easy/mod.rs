@@ -5,6 +5,7 @@ pub mod n_1800;
 pub mod n_2309;
 pub mod n_26;
 pub mod n_94;
+mod n_2315;
 
 //遍历二维数组
 #[cfg(test)]
